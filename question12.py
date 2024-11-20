@@ -48,9 +48,9 @@ class DriverApp:
     def __init__(self, ride_controller: RideController):
         self.ride_controller = ride_controller
     def accept_ride(self, ride: Ride, driver: Driver):
-        print("\nDriver (driver.name) accepting ride[ride.id]...")
+        print(f"\nDriver {driver.name} accepting ride{ride.id}...")
         self.ride_controller.update_ride_status(ride, RideStatus.ACCEPTED, driver)
-        print("Ride #{ride.id) accepted by driver(driver.name}")
+        print(f"Ride #{ride.id} accepted by driver {driver.name}")
     
 
 
@@ -65,21 +65,17 @@ class UserApp:
     
 
 
-# todo: add a formal test case
-
+# Test case #3:
+# Double ride acceptance
 def main():
     ride_controller = RideController()
-    #init apps
     user_app = UserApp(ride_controller)
     driver_app =DriverApp(ride_controller)
     user = User(1, "Alice")
     driver = Driver(1, "Bob")
-    ride = user_app.request_ride(user)
+    ride = user_app.request_ride(driver)
     driver_app.accept_ride(ride, driver)
-    print("\nFinal ride status:")
-    print(f"Ride f{ride.id}")
-    print(f"User: {ride.user.name}")
-    print(f"Driver: {ride.driver.name}")
-    print(f"Status: {ride.status.value}")
+    driver_app.accept_ride(ride, driver)
+    assert ride_controller.ride_counter == 1, f"Ride counter is supposed to be 1 but it is {ride_controller.ride_counter}"
 
 main()
