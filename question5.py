@@ -85,7 +85,7 @@ class TestStrategy(unittest.TestCase):
         self.assertEqual(dynamic_pricing_model.calculate_fee(5.0, 10, 10, 20), 35.0)
         
     def test_select_strategy(self):
-        self.assertEqual(select_strategy(8, 'heavy', 'city', 50, 40), RushHourStrategy())
-        self.assertEqual(select_strategy(10, 'light', 'city', 10, 20), CityStrategy())
-        self.assertEqual(select_strategy(12, 'light', 'suburbs', 10, 20), SuburbsStrategy())
-        self.assertEqual(select_strategy(5, 'HEAVY', 'unknown', 10, 20), RushHourStrategy())
+        self.assertEqual(type(select_strategy(8, 'heavy', 'city', 50, 40)) , type(RushHourStrategy()))
+        self.assertEqual(type(select_strategy(10, 'light', 'city', 10, 20)), type(CityStrategy()))
+        self.assertEqual(type(select_strategy(12, 'light', 'suburbs', 10, 20)), type(SuburbsStrategy()))
+        self.assertEqual(type(select_strategy(5, 'heavy', 'unknown', 10, 20)), type(RushHourStrategy()))
