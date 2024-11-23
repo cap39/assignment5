@@ -25,3 +25,4 @@ class RideOptionsDecorator:
 empty_list = RideOptionsList()
 list_1_results = empty_list.compose_ride_options()
 assert list_1_results == [], "List was not empty!"
+print("Question 10 test passed")
