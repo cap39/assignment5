@@ -45,4 +45,5 @@ class RideMatchingService:
 api_gateway = APIGateway()
 api_gateway.add_driver("Driver")
 assert api_gateway.request_ride() == "No matches available", "Test case #2 failed!"
+print("Question 11 test passed")
 

@@ -77,5 +77,6 @@ def main():
     driver_app.accept_ride(ride, driver)
     driver_app.accept_ride(ride, driver)
     assert ride_controller.ride_counter == 1, f"Ride counter is supposed to be 1 but it is {ride_controller.ride_counter}"
+	print("question 12 test passed")
 
 main()
